@@ -18,8 +18,11 @@ class InterpreterOptions {
   InterpreterOptions._(this._options);
 
   /// Creates a new options instance.
-  factory InterpreterOptions() =>
-      InterpreterOptions._(tfLiteInterpreterOptionsCreate());
+  factory InterpreterOptions() {
+    final options = InterpreterOptions._(tfLiteInterpreterOptionsCreate());
+    options.useFlexDelegate = false;
+    return options;
+  }
 
   /// Destroys the options instance.
   void delete() {
@@ -50,6 +53,11 @@ class InterpreterOptions {
   /// Adds delegate to Interpreter Options
   void addDelegate(Delegate delegate) {
     tfLiteInterpreterOptionsAddDelegate(_options, delegate.base);
+  }
+
+  /// Set true if flex delegate is required
+  set useFlexDelegate(bool useFlexDelegate) {
+    this._options.ref.useFlexDelegate = useFlexDelegate ? 1 : 0;
   }
 
 // Unimplemented:

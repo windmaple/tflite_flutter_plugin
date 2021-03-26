@@ -7,7 +7,10 @@ import 'package:ffi/ffi.dart';
 class TfLiteInterpreter extends Struct {}
 
 /// Wraps customized interpreter configuration options.
-class TfLiteInterpreterOptions extends Struct {}
+class TfLiteInterpreterOptions extends Struct {
+  @Int32()
+  int useFlexDelegate;
+}
 
 /// Wraps a loaded TensorFlowLite model.
 class TfLiteModel extends Struct {}
@@ -17,6 +20,8 @@ class TfLiteTensor extends Struct {}
 
 /// Wraps a TfLiteDelegate
 class TfLiteDelegate extends Struct {}
+
+//
 
 /// Wraps Quantization Params
 class TfLiteQuantizationParams extends Struct {
